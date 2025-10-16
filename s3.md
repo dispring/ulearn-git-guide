@@ -1,0 +1,30 @@
+# S3. Ссылки
+
+#### HEAD — текущая ссылка, tag — фиксированная ссылка, branch — движущаяся за HEAD ссылка
+
+#### checkout — перемещение на ветку или коммит, reset — перемещение с веткой на коммит
+
+#### Видно то, на что есть ссылки, остальное — мусор
+
+- `git tag` — вывести список тегов
+- `git tag <tagname>` — создать тег
+- `git tag -d <tagname>` — удалить тег
+- `git branch --sort=-committerdate` — вывести список локальных веток от новых к старым
+- `git branch <branchname>` — создать ветку
+- `git branch -f <branchname> <to_commit>` — создать или переместить ветку
+- `git branch -M <newbranch>` — переименовать текущую ветку, даже если новое имя уже занято
+- `git branch -d <branchname>` — удалить ветку
+- `git branch -D <branchname>` — удалить ветку, даже если какие-то коммиты будут скрыты
+- `git checkout -d <commit>` или `git switch --detach <commit>` — переместить HEAD на коммит, причем получится detached HEAD
+- `git checkout <branch>` или `git switch <branch>` — переместить HEAD на ветку
+- `git checkout -b <new_branch>` = `git checkout -b <new_branch> HEAD` или `git switch -c <new_branch>` — создать ветку и перейти на нее
+- `git reset --hard <commit>` — переместить HEAD и текущую ветку на `<commit>`
+- `git log --oneline --decorate --graph` — вывести историю коммитов от HEAD в виде дерева
+- `git log --oneline --decorate --graph --all` — вывести историю коммитов от всех ссылок в виде дерева
+- `git log --oneline --decorate --graph --all --reflog` — вывести историю коммитов от всех ссылок и всех недавних положений HEAD в виде дерева
+- `git reflog show <ref>` — показать лог действий со ссылкой
+- `git reflog` = `git reflog show HEAD` — показать лог действий с HEAD
+- `git gc` — удалить ненужные файлы и оптимизировать локальный репозиторий
+- `<ref>~N` — 1-ый родитель из N-ого поколения, например, `HEAD~3`
+- `<ref>^N` — N-ый родитель предыдущего поколения, например, `HEAD^1^2`
+- `<ref>@{N}` — N-ый предшественник по reflog, например, `HEAD@{5}`
